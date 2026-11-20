@@ -1,0 +1,108 @@
+/* Breakpoints load last so they override component base rules. */
+
+@media (max-width: 1180px) {
+  .topbar__crumb { display: none; }
+}
+
+@media (max-width: 1080px) {
+  main { padding-left: var(--space-5); padding-right: var(--space-5); }
+  .intro { grid-template-columns: minmax(0, 1fr); align-items: stretch; gap: var(--space-6); padding: var(--space-7) 0; }
+  .intro h1 { max-width: 13ch; }
+  .live { grid-template-columns: minmax(0, 1fr); }
+  .live__side { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 900px) {
+  .app,
+  .app[data-rail="true"] { grid-template-columns: minmax(0, 1fr); }
+
+  .sidebar {
+    position: fixed;
+    z-index: var(--z-drawer);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(300px, 86vw);
+    height: auto;
+    margin: 0;
+    border-width: 0 1px 0 0;
+    border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform var(--dur-3) var(--ease-out), visibility 0s linear var(--dur-3);
+    box-shadow: var(--shadow-pop);
+  }
+  .sidebar[data-open="true"] {
+    transform: none;
+    visibility: visible;
+    transition: transform var(--dur-3) var(--ease-out), visibility 0s;
+  }
+  .collapse-btn { display: none; }
+  .nav__link { min-height: var(--tap); }
+  .nav__link--tool { min-height: 40px; }
+
+  .menu-btn { display: inline-flex; }
+  .topbar { padding: 0 var(--space-3); gap: var(--space-2); }
+  .topbar__brand { display: inline-flex; }
+  .topbar__brand .wordmark { display: none; }
+  .search-trigger { width: auto; flex: 1; max-width: none; }
+  .search-trigger__keys { display: none; }
+  .topbar__spacer { display: none; }
+
+  .panes { grid-template-columns: minmax(0, 1fr); }
+  .grid--2,
+  .grid--3 { grid-template-columns: minmax(0, 1fr); }
+  .notes { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 640px) {
+  main { padding: var(--space-5) var(--space-3) var(--space-7); }
+  .intro { gap: var(--space-5); padding: var(--space-5) 0 var(--space-6); }
+  .intro h1 { font-size: clamp(2.35rem, 12vw, 3.25rem); line-height: 1; }
+  .intro p { margin-top: var(--space-4); }
+  .intro__search { padding: var(--space-4); border-radius: var(--radius-lg); }
+  .intro__search .input { min-height: 56px; }
+  .tile { min-height: 160px; padding: var(--space-4); }
+  .tile:hover,
+  .tile:focus-visible { transform: translateY(-2px); }
+  .live__side { grid-template-columns: minmax(0, 1fr); }
+  .cat-index { grid-template-columns: minmax(0, 1fr); }
+  .cat-index__item { padding: var(--space-4); }
+  .cat-index__item:nth-child(odd) { border-right: 0; }
+  .cat-index__item:nth-last-child(-n + 2) { border-bottom: 1px solid var(--border); }
+  .cat-index__item:last-child { border-bottom: 0; }
+  .cat-index__item > p { min-height: 0; }
+  .cat-index__tools { grid-template-columns: minmax(0, 1fr); }
+  .cat-index__tools a,
+  .cat-index__tools a:nth-last-child(-n + 2):nth-child(odd) { min-height: var(--tap); border-bottom: 1px solid var(--border); }
+  .cat-index__tools a:last-child { border-bottom: 0; }
+  .cat-index__item h3 a { min-height: var(--tap); }
+  .tool-head { flex-direction: column; }
+  .btn { min-height: 40px; }
+  .btn--sm { min-height: 36px; }
+  .btn--icon { width: 40px; }
+  .btn--icon.btn--sm { width: 36px; }
+  .segmented button { min-height: 36px; }
+  .check { min-height: var(--tap); }
+  .input,
+  .select { min-height: var(--tap); font-size: 16px; }
+  .textarea { font-size: 14px; }
+  .tool-row { grid-template-columns: minmax(0, 1fr) auto; padding-left: var(--space-3); }
+  .usage-bar { grid-template-columns: minmax(0, 1fr) 70px 3em; }
+  .palette { top: var(--space-3); }
+  .palette__side { display: none; }
+  .filters .field { min-width: 0; flex: 1 1 140px; }
+  .toasts { left: var(--space-3); right: var(--space-3); }
+  .kv { grid-template-columns: minmax(0, 1fr); }
+  .kv dd { border-top: 0; padding-top: 0; }
+  .kv dt { background: transparent; padding-bottom: var(--space-1); }
+  .calc-grid .btn { min-height: 48px; }
+}
+
+#app:not([data-auth="in"]) .sidebar,
+#app:not([data-auth="in"]) #menu-btn,
+#app:not([data-auth="in"]) #search-trigger,
+#app:not([data-auth="in"]) #crumb,
+#app:not([data-auth="in"]) #scrim { display: none !important; }
+#app:not([data-auth="in"]) { grid-template-columns: 1fr !important; }
+#app:not([data-auth="in"]) .main, #app:not([data-auth="in"]) main { margin-left: 0 !important; }
